@@ -41,11 +41,19 @@
             }
 
             .content {
-                text-align: center;
+                /*text-align: center;*/
+                padding: 100px 200px;
             }
-
+            img{
+                float: left;
+                width: 40%;
+            }
+            .text{
+                width: 55%;
+            }
             .title {
                 font-size: 84px;
+                text-align: center;
             }
 
             .links > a {
@@ -79,16 +87,18 @@
                 </div>
             @endif
 
-            <div class="content">
+            <div class="content container">
                 <div class="title m-b-md">
                     Hellooooo
                 </div>
-                <div align="left" style="font-weight: bold;">
+                <img src="images/Capture.PNG" alt="" style="float: left;">
+                <div style="font-weight: bold; float: right;" class="text">
                     <p>Họ và tên: Vũ Thị Uyên</p>
                     <p>Năm sinh: 2000</p>
                     <p>Trường: Học viện Nông Nghiệp VN</p>
-                    <p>Mục tiêu sau khóa học Laravel: sử dụng kiến thức về Laravel để xin thực tập tích lũy kinh nghiệm và tích lũy tiền trả học phí cho anh Thương hihi.</p>
+                    <p>Mục tiêu sau khóa học Laravel: sử dụng kiến thức về Laravel để xin thực tập tích lũy kinh nghiệm và tích lũy tiền trả học phí cho anh Thương :D.</p>
                 </div>
+                
 <!--                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
