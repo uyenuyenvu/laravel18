@@ -14,6 +14,7 @@
 Route::view('/','home');
 Route::view('/home','home');
 
+
 //user
 Route::get('/user/{id?}', function ($id=null) {
 	if($id==null){
@@ -55,4 +56,50 @@ Route::prefix('task')->group(function(){
 			echo "again ".$id;
 		}
 	})->name('todo.task.again');
+});
+
+// Route::get('/hello2',function(){
+// 	return view('hello2',[
+// 		'name' => 'UYÊN',
+// 		'year' => '2000',
+// 		'school' => 'vnua'
+// 	]);
+// });
+
+Route::get('/hello2',function(){
+	$records=['1','2'];
+	return view('hello2')->with([
+		'name'=>'<h1>uyên</h1>',
+		'year'=>'2000000000',
+		'school'=>'vnua',
+		'records'=>$records
+		]);
+});
+
+Route::get('/hello1',function(){
+	return view('hello1');
+});
+Route::get('/sub/hello1',function(){
+	return view('hello.hello1');
+});
+Route::get('/sub/hello2',function(){
+	return view('hello.hello2');
+});
+Route::get('/layout/home',function(){
+	return view('layout.home');
+});
+Route::get('/layout/detail',function(){
+	return view('layout.detail');
+});
+
+//profile
+Route::get('/profile',function(){
+	return view('profile')->with([
+		'name'=> 'Vũ Thị Uyên',
+		'birthYear'=>'200000000',
+		'school'=>'Học viện Nông Nghiệp Việt Nam',
+		'homeTown'=>'Kim Sơn, Ninh Bình',
+		'information'=>'<div><i><b>-Chiều cao: </b></i><strike> 1m52 </strike> 1m48 <br><i><b>-Cân nặng: </b></i>42kg <br><i><b>-Sở thích: </b></i>Ngủ + ôm mèo = ôm mèo ngủ</div>',
+		'target'=>'lập trình thành công ra virus-> tống tiền thế giới'
+	]);
 });
