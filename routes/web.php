@@ -11,8 +11,9 @@
 |
 */
 
-Route::view('/','home');
+// Route::view('/','home');
 Route::view('/home','home');
+Route::view('/test','test');
 
 
 //user
@@ -33,9 +34,9 @@ Route::get('/thanhcong/{id}', function($id){
 
 Route::prefix('task')->group(function(){
 	//delete
-	Route::delete('/deleted/{id}',function($id){
-		return redirect("/thanhcong/".$id);
-	})->name('todo.task.delete');
+	// Route::delete('/deleted/{id}',function($id){
+	// 	return redirect("/thanhcong/".$id);
+	// })->name('todo.task.delete');
 	//edit
 	Route::get('/edit/{id}',function($id){
 		dd('edit');
@@ -103,3 +104,46 @@ Route::get('/profile',function(){
 		'target'=>'lập trình thành công ra virus-> tống tiền thế giới'
 	]);
 });
+
+//list
+Route::get('/list',function(){
+	return view('list')->with([
+		'list' => [
+	        [
+	            'name' => 'Học View trong Laravel',
+	            'status' => 0
+	        ],
+	        [
+	            'name' => 'Học Route trong Laravel',
+	            'status' => 1
+	        ],
+	        [
+	            'name' => 'Làm bài tập View trong Laravel',
+	            'status' => -1
+	        ],
+    ]
+	]);
+});
+
+Route::get('/','HomeController@index');
+Route::get('/page/{page?}','HomeController@page');
+Route::get('/Setting1','SettingController@index');
+
+Route::group([
+	'namespace'=>'Admin',
+], function(){
+	Route::get('/Setting2','SettingController@index');
+	Route::get('/Setting3','Test\SettingController@index');
+	Route::get('/Dashboard','dashboardController@index');
+});
+Route::resource('task','Frontend\taskController');
+
+//btvn 4
+Route::get('/create','Frontend\taskController@create')->name('todo.task.create');
+Route::get('/store','Frontend\taskController@store')->name('todo.task.store');
+Route::get('/show/{id}','Frontend\taskController@show')->name('todo.task.show');
+Route::get('/edit/{id}','Frontend\taskController@edit')->name('todo.task.edit');
+Route::get('/update/{id}','Frontend\taskController@update')->name('todo.task.update');
+Route::delete('/destroy/{id}','Frontend\taskController@destroy')->name('todo.task.destroy');
+
+

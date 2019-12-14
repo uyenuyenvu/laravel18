@@ -1,35 +1,35 @@
 @extends('layout.master')
 
 @section('title')
-    home
+	home
 @endsection 
 
 @section('css')
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+	    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+	    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 
-        <!-- Styles -->
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	    <!-- Styles -->
+	    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
-        <style>
-            body {
-                font-family: 'Lato';
-            }
-            .fa-btn {
-                margin-right: 1px;
-            }
-            .task-table tbody tr td:nth-child(2){
-                width: 120px;
-            }
-            .task-table tbody tr td:nth-child(3){
-                width: 100px;
-            }
-        </style>
+	    <style>
+	        body {
+	            font-family: 'Lato';
+	        }
+	        .fa-btn {
+	            margin-right: 1px;
+	        }
+	        .task-table tbody tr td:nth-child(2){
+	            width: 120px;
+	        }
+	        .task-table tbody tr td:nth-child(3){
+	            width: 100px;
+	        }
+	    </style>
 
 @endsection 
 
 @section('content')
-    <div class="container">
+	<div class="container">
     <div class="col-sm-offset-2 col-sm-8">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -40,7 +40,7 @@
                 <!-- Display Validation Errors -->
 
             <!-- New Task Form -->
-                <form action="{{ route('task.store')}}" method="POST" class="form-horizontal">
+                <form action="{{ url('task')}}" method="POST" class="form-horizontal">
                 {{ csrf_field() }}
 
                 <!-- Task Name -->
@@ -49,13 +49,6 @@
 
                         <div class="col-sm-6">
                             <input type="text" name="name" id="task-name" class="form-control" value="{{ old('task') }}">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="task-name" class="col-sm-3 control-label">Hạn hoàn thành</label>
-
-                        <div class="col-sm-6">
-                            <input type="text" name="deadline" id="task-name" class="form-control" value="{{ old('task') }}">
                         </div>
                     </div>
 
@@ -92,19 +85,9 @@
                                 <i class="fa fa-btn fa-check"></i>Hoàn thành
                             </a>
                         </td>
-                        <td>
-                              <a href="{{ route('todo.task.show',1) }}" type="submit" class="btn btn-success">
-                                <i class="fa fa-btn fa-eye"></i>xem cv
-                            </a>
-                        </td>
-                        <td>
-                              <a href="{{ route('todo.task.edit',1) }}" type="submit" class="btn btn-success">
-                                <i class="fa fa-btn fa-edit"></i>sửa cv
-                            </a>
-                        </td>
                         <!-- Task Delete Button -->
                         <td>
-                            <form action="{{ route('todo.task.destroy',1) }}" method="POST">
+                            <form action="{{ url('task/1') }}" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
 
@@ -122,19 +105,9 @@
                                 <i class="fa fa-btn fa-check"></i>Hoàn thành
                             </a>
                         </td>
-                        <td>
-                              <a href="{{ route('todo.task.show',2) }}" type="submit" class="btn btn-success">
-                                <i class="fa fa-btn fa-eye"></i>xem cv
-                            </a>
-                        </td>
-                        <td>
-                              <a href="{{ route('todo.task.edit',2) }}" type="submit" class="btn btn-success">
-                                <i class="fa fa-btn fa-edit"></i>sửa cv
-                            </a>
-                        </td>
                         <!-- Task Delete Button -->
                         <td>
-                            <form action="{{ route('todo.task.destroy',2) }}" method="POST">
+                            <form action="{{ route('todo.task.delete',1) }}" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
 
@@ -152,19 +125,9 @@
                                 <i class="fa fa-btn fa-refresh"></i>Làm lại
                             </a>
                         </td>
-                        <td>
-                              <a href="{{ route('todo.task.show',3) }}" type="submit" class="btn btn-success">
-                                <i class="fa fa-btn fa-eye"></i>xem cv
-                            </a>
-                        </td>
-                        <td>
-                              <a href="{{ route('todo.task.edit',3) }}" type="submit" class="btn btn-success">
-                                <i class="fa fa-btn fa-edit"></i>sửa cv
-                            </a>
-                        </td>
                         <!-- Task Delete Button -->
                         <td>
-                            <form action="{{ route('todo.task.destroy',3) }}" method="POST">
+                            <form action="{{ route('todo.task.delete',1) }}" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
 
@@ -183,6 +146,6 @@
 @endsection 
 
 @section('script')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 @endsection 
