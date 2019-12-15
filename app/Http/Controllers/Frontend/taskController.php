@@ -35,8 +35,8 @@ class taskController extends Controller
      */
     public function store(Request $request)
     {
-            $name = $request->input('name','uyen');
-            // dd($name);
+            $name = $request->all();
+            dd($name);
             $name= $request->name2;
             dd($name);
 
