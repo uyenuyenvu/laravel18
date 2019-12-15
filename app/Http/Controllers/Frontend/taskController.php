@@ -35,10 +35,8 @@ class taskController extends Controller
      */
     public function store(Request $request)
     {
-            $name = $request->all();
-            dd($name);
-            $name= $request->name2;
-            dd($name);
+        $name = $request->only('name', 'deadline');
+        dd($name);
 
     }
 
@@ -74,8 +72,8 @@ class taskController extends Controller
     public function update(Request $request, $id)
     {
         
-        $name = $request->input('name','uyen');
-            // dd($name);
+        $name = $request->all();
+            dd($name);
         return 'function update where id ='.$id;
     }
 
@@ -85,8 +83,17 @@ class taskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+        $name = $request->get('id');
+        // echo "id ";
+            dd($name);
         return 'function destroy where id= '.$id;
+    }
+    public function complete($id){
+        return 'function complete where id ='.$id;
+    }
+    public function recomplete($id){
+        return 'function recomplete where id ='.$id;
     }
 }
