@@ -125,7 +125,7 @@ Route::get('/list',function(){
 	]);
 });
 
-Route::get('/','HomeController@index');
+// Route::get('/','HomeController@index');
 Route::get('/page/{page?}','HomeController@page');
 Route::get('/Setting1','SettingController@index');
 
@@ -136,16 +136,18 @@ Route::group([
 	Route::get('/Setting3','Test\SettingController@index');
 	Route::get('/Dashboard','dashboardController@index');
 });
-Route::resource('task','Frontend\taskController');
+// Route::resource('task','Frontend\TaskController');
 
 //btvn 4
-Route::get('/create','Frontend\taskController@create')->name('todo.task.create');
-Route::get('/store','Frontend\taskController@store')->name('todo.task.store');
-Route::get('/show/{id}','Frontend\taskController@show')->name('todo.task.show');
-Route::get('/edit/{id}','Frontend\taskController@edit')->name('todo.task.edit');
-Route::get('/update/{id}','Frontend\taskController@update')->name('todo.task.update');
-Route::delete('/destroy','Frontend\taskController@destroy')->name('todo.task.destroy');
-Route::get('/complete/{id}','Frontend\taskController@complete')->name('todo.task.complete');
-Route::get('/recomplete/{id}','Frontend\taskController@recomplete')->name('todo.task.recomplete');
+Route::get('/create','Frontend\TaskController@create')->name('todo.task.create');
+Route::post('/store','Frontend\TaskController@store')->name('todo.task.store');
+Route::get('/show/{id}','Frontend\TaskController@show')->name('todo.task.show');
+Route::get('/edit/{id}','Frontend\TaskController@edit')->name('todo.task.edit');
+Route::post('/update/{id}','Frontend\TaskController@update')->name('todo.task.update');
+Route::delete('/destroy','Frontend\TaskController@destroy')->name('todo.task.destroy');
+Route::get('/complete/{id}','Frontend\TaskController@complete')->name('todo.task.complete');
+Route::get('/recomplete/{id}','Frontend\TaskController@recomplete')->name('todo.task.recomplete');
+Route::get('/','Frontend\TaskController@index')->name('todo.task.index');
+Route::get('/task/create','Frontend\TaskController@create')->name('todo.task.create');
 
 
