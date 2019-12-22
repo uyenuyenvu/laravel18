@@ -43,7 +43,7 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $name = $request->only('name', 'deadline','content','status');
+        $name = $request->all();
 //         dd($name);
         // dd('store');
         $task=new Task();
@@ -51,6 +51,7 @@ class TaskController extends Controller
         $task->deadline=$name['deadline'];
         $task->status=$request['status'];
         $task->content=$name['content'];
+        $task->priority=$name['priority'];
         $task->save();
         return redirect('/');
 
@@ -109,6 +110,7 @@ class TaskController extends Controller
         $task->deadline=$request['deadline'];
         $task->status=$request['status'];
         $task->content=$request['content'];
+        $task->priority=$request['priority'];
         $task->save();
 //        dd($task);
         return redirect('/');

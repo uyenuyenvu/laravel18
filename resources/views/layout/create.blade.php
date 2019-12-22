@@ -79,6 +79,23 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="task-name" class="col-sm-3 control-label">có quan trọng không?</label>
+
+                            <div class="col-sm-6">
+                                <select name="priority">
+                                    <option value="0">
+                                        không
+                                    </option>
+                                    <option value="1">
+                                        bình thường vậy
+                                    </option>
+                                    <option value="2">
+                                        quan trọng lắm
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
                         <!-- Add Task Button -->
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-6">

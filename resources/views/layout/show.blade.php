@@ -43,6 +43,21 @@
                     <p> cong viec: {{$task->name}}</p>
                     <p>Han hoan thanh: {{$task->deadline}}</p>
                     <p>noi dung cong viec: {{$task->content}}</p>
+                    <p>mức độ :
+                    @if($task->priority==0)
+
+                            không quan trọng
+
+                    @elseif($task->priority==1)
+
+                            quan trọng bình thường
+
+                    @elseif($task->priority==2)
+
+                            quan trọng lắm ý
+
+                        @endif
+                    </p>
                 </div>
             </div>
 

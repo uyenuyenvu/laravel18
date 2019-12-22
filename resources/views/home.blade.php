@@ -47,6 +47,7 @@
                     <thead>
                     <th>Tên công việc</th>
                     <th>&nbsp;Trang thai</th>
+                    <th>Quan trọng không?</th>
                     </thead>
                     <tbody>
                         @foreach($tasks as $task)
@@ -79,6 +80,19 @@
                         @elseif($task->status==2)
                             <td>
                                 xong
+                            </td>
+                        @endif
+                        @if($task->priority==0)
+                            <td>
+                                không quan trọng
+                            </td>
+                        @elseif($task->priority==1)
+                            <td>
+                                quan trọng bình thường
+                            </td>
+                        @elseif($task->priority==2)
+                            <td>
+                                quan trọng lắm ý
                             </td>
                         @endif
 

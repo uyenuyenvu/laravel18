@@ -85,6 +85,24 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="task-name" class="col-sm-3 control-label">trang thai</label>
+
+                            <div class="col-sm-6">
+                                <select name="priority">
+                                    <option value="0" @if($task->priority==0) selected="selected" @endif>
+                                        không quan trọng
+                                    </option>
+                                    <option value="1" @if($task->priority==1) selected="selected" @endif>
+                                        bình thường vậy
+                                    </option>
+                                    <option value="2" @if($task->priority==2) selected="selected" @endif>
+                                        quan trọng lắm
+                                    </option>
+
+                                </select>
+                            </div>
+                        </div>
                         <!-- Add Task Button -->
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-6">
