@@ -144,10 +144,13 @@ Route::post('/store','Frontend\TaskController@store')->name('todo.task.store');
 Route::get('/show/{id}','Frontend\TaskController@show')->name('todo.task.show');
 Route::get('/edit/{id}','Frontend\TaskController@edit')->name('todo.task.edit');
 Route::post('/update/{id}','Frontend\TaskController@update')->name('todo.task.update');
+
 Route::delete('/destroy','Frontend\TaskController@destroy')->name('todo.task.destroy');
 Route::get('/complete/{id}','Frontend\TaskController@complete')->name('todo.task.complete');
 Route::get('/recomplete/{id}','Frontend\TaskController@recomplete')->name('todo.task.recomplete');
 Route::get('/','Frontend\TaskController@index')->name('todo.task.index');
 Route::get('/task/create','Frontend\TaskController@create')->name('todo.task.create');
+Route::get('/task/play/{id}','Frontend\TaskController@play')->name('todo.task.play');
+Route::get('/task/not_do/{id}','Frontend\TaskController@not_do')->name('todo.task.not_do');
 
 

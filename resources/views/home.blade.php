@@ -53,7 +53,14 @@
 
                     <tr>
                         <td class="table-text"><div>
-                                <a href="{{ route('todo.task.show',$task->id)  }}"> {{$task->name}} </a>
+                                <a href="{{ route('todo.task.show',$task->id)  }}">
+                                    @if($task->status==-1)
+                                    <strike>{{$task->name}}</strike>
+
+                                        @else
+                                        {{$task->name}}
+                                        @endif
+                                </a>
                             </div></td>
                         <!-- Task Complete Button -->
                         <!--trang thai -->
@@ -75,27 +82,51 @@
                             </td>
                         @endif
 
-                        @if($task->status==0)
+                        @if($task->status==-1)
                             <td>
-                                <a href="{{ route('todo.task.complete',$task->id) }}" type="submit" class="btn btn-warning">
-                                    <i class="fa fa-btn fa-check"></i>
+                                <a href="{{ route('todo.task.play',$task->id) }}" type="submit" class="btn btn-primary">
+                                    <i class="fa fa-btn fa-play"></i>đang làm
+                                </a>
+                                <a href="{{ route('todo.task.complete',$task->id) }}" type="submit" class="btn btn-info">
+                                    <i class="fa fa-btn fa-check"></i>xong
                                 </a>
                             </td>
-                        @else
+                        @elseif($task->status==0)
+                            <td>
+                                <a href="{{ route('todo.task.complete',$task->id) }}" type="submit" class="btn btn-info">
+                                    <i class="fa fa-btn fa-check"></i>xong
+                                </a>
+                                <a href="{{ route('todo.task.not_do',$task->id) }}" type="submit" class="btn btn-danger">
+                                    <i class="fa fa-btn fa-times"></i>bỏ
+                                </a>
+                                <a href="{{ route('todo.task.play',$task->id) }}" type="submit" class="btn btn-primary">
+                                    <i class="fa fa-btn fa-play"></i>đang làm
+                                </a>
+                            </td>
+                        @elseif($task->status==1)
+                            <td>
+                                <a href="{{ route('todo.task.complete',$task->id) }}" type="submit" class="btn btn-info">
+                                    <i class="fa fa-btn fa-check"></i>xong
+                                </a>
+                                <a href="{{ route('todo.task.not_do',$task->id) }}" type="submit" class="btn btn-danger">
+                                    <i class="fa fa-btn fa-times"></i>bỏ
+                                </a>
+                            </td>
+                        @elseif($task->status==2)
                             <td>
                                 <a href="{{ route('todo.task.recomplete',$task->id) }}" type="submit" class="btn btn-success">
-                                    <i class="fa fa-btn fa-refresh"></i>
+                                    <i class="fa fa-btn fa-refresh"></i>làm lại
                                 </a>
                             </td>
                         @endif
                         <td>
                               <a href="{{ route('todo.task.show',$task->id) }}" type="submit" class="btn btn-success">
-                                <i class="fa fa-btn fa-eye"></i>
+                                <i class="fa fa-btn fa-eye"></i>xem
                             </a>
                         </td>
                         <td>
                               <a href="{{ route('todo.task.edit',$task->id) }}" type="submit" class="btn btn-warning">
-                                <i class="fa fa-btn fa-edit"></i>
+                                <i class="fa fa-btn fa-edit"></i>sửa
                             </a>
                         </td>
                         <!-- Task Delete Button -->
@@ -105,7 +136,7 @@
                                 {{ method_field('DELETE') }}
 
                                 <button type="submit" class="btn btn-danger" name="id" value="{{ $task->id }}">
-                                    <i class="fa fa-btn fa-trash"></i>
+                                    <i class="fa fa-btn fa-trash"></i>xóa
                                 </button>
                             </form>
                         </td>

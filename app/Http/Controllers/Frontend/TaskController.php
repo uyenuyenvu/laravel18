@@ -99,7 +99,7 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
 
-        $request = $request->only('name', 'deadline','content');
+        $request = $request->all();
 //        dd($name['name']);
         $task=Task::findOrFail($id);
 
@@ -149,6 +149,26 @@ class TaskController extends Controller
         //sua
 
         $task->status='0';
+        $task->save();
+//        dd($task);
+        return redirect('/');
+    }
+    public function play($id){
+        $task=Task::findOrFail($id);
+
+        //sua
+
+        $task->status='1';
+        $task->save();
+//        dd($task);
+        return redirect('/');
+    }
+    public function not_do($id){
+        $task=Task::findOrFail($id);
+
+        //sua
+
+        $task->status='-1';
         $task->save();
 //        dd($task);
         return redirect('/');
